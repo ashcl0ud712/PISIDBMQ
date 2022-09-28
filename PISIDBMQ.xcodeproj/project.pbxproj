@@ -14,6 +14,7 @@
 		7B9558AE28E49E11006FA237 /* mMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558AC28E49E11006FA237 /* mMessage.cpp */; };
 		7B9558B228E49E39006FA237 /* mQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558B028E49E39006FA237 /* mQueue.cpp */; };
 		7B9558B628E49E69006FA237 /* QueueSpace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558B428E49E69006FA237 /* QueueSpace.cpp */; };
+		7B9558BA28E4A06E006FA237 /* QueueTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558B828E4A06E006FA237 /* QueueTests.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		7B9558B128E49E39006FA237 /* mQueue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mQueue.hpp; sourceTree = "<group>"; };
 		7B9558B428E49E69006FA237 /* QueueSpace.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueueSpace.cpp; sourceTree = "<group>"; };
 		7B9558B528E49E69006FA237 /* QueueSpace.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueueSpace.hpp; sourceTree = "<group>"; };
+		7B9558B828E4A06E006FA237 /* QueueTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueueTests.cpp; sourceTree = "<group>"; };
+		7B9558B928E4A06E006FA237 /* QueueTests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueueTests.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,7 @@
 		7B95589528E49CE5006FA237 /* PISIDBMQ */ = {
 			isa = PBXGroup;
 			children = (
+				7B9558B728E4A056006FA237 /* tests */,
 				7B95589E28E49CF5006FA237 /* src */,
 				7B95589D28E49CEE006FA237 /* lib */,
 				7B95589628E49CE5006FA237 /* main.cpp */,
@@ -156,6 +160,15 @@
 			path = QueueSpace;
 			sourceTree = "<group>";
 		};
+		7B9558B728E4A056006FA237 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558B828E4A06E006FA237 /* QueueTests.cpp */,
+				7B9558B928E4A06E006FA237 /* QueueTests.hpp */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,6 +233,7 @@
 				7B9558B628E49E69006FA237 /* QueueSpace.cpp in Sources */,
 				7B9558AE28E49E11006FA237 /* mMessage.cpp in Sources */,
 				7B9558A628E49D6D006FA237 /* tools.cpp in Sources */,
+				7B9558BA28E4A06E006FA237 /* QueueTests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
