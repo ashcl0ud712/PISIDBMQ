@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7B95589728E49CE5006FA237 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B95589628E49CE5006FA237 /* main.cpp */; };
+		7B9558A128E49D2B006FA237 /* mLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B95589F28E49D2B006FA237 /* mLogger.cpp */; };
+		7B9558A628E49D6D006FA237 /* tools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558A428E49D6D006FA237 /* tools.cpp */; };
+		7B9558AA28E49DDE006FA237 /* mHeaderBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558A828E49DDE006FA237 /* mHeaderBase.cpp */; };
+		7B9558AE28E49E11006FA237 /* mMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558AC28E49E11006FA237 /* mMessage.cpp */; };
+		7B9558B228E49E39006FA237 /* mQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558B028E49E39006FA237 /* mQueue.cpp */; };
+		7B9558B628E49E69006FA237 /* QueueSpace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558B428E49E69006FA237 /* QueueSpace.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,18 @@
 /* Begin PBXFileReference section */
 		7B95589328E49CE5006FA237 /* PISIDBMQ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PISIDBMQ; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B95589628E49CE5006FA237 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7B95589F28E49D2B006FA237 /* mLogger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mLogger.cpp; sourceTree = "<group>"; };
+		7B9558A028E49D2B006FA237 /* mLogger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mLogger.hpp; sourceTree = "<group>"; };
+		7B9558A428E49D6D006FA237 /* tools.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tools.cpp; sourceTree = "<group>"; };
+		7B9558A528E49D6D006FA237 /* tools.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tools.hpp; sourceTree = "<group>"; };
+		7B9558A828E49DDE006FA237 /* mHeaderBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mHeaderBase.cpp; sourceTree = "<group>"; };
+		7B9558A928E49DDE006FA237 /* mHeaderBase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mHeaderBase.hpp; sourceTree = "<group>"; };
+		7B9558AC28E49E11006FA237 /* mMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mMessage.cpp; sourceTree = "<group>"; };
+		7B9558AD28E49E11006FA237 /* mMessage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mMessage.hpp; sourceTree = "<group>"; };
+		7B9558B028E49E39006FA237 /* mQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mQueue.cpp; sourceTree = "<group>"; };
+		7B9558B128E49E39006FA237 /* mQueue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mQueue.hpp; sourceTree = "<group>"; };
+		7B9558B428E49E69006FA237 /* QueueSpace.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueueSpace.cpp; sourceTree = "<group>"; };
+		7B9558B528E49E69006FA237 /* QueueSpace.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueueSpace.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +75,85 @@
 		7B95589528E49CE5006FA237 /* PISIDBMQ */ = {
 			isa = PBXGroup;
 			children = (
+				7B95589E28E49CF5006FA237 /* src */,
+				7B95589D28E49CEE006FA237 /* lib */,
 				7B95589628E49CE5006FA237 /* main.cpp */,
 			);
 			path = PISIDBMQ;
+			sourceTree = "<group>";
+		};
+		7B95589D28E49CEE006FA237 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558A328E49D5F006FA237 /* tools */,
+				7B9558A228E49D4E006FA237 /* mLogger */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		7B95589E28E49CF5006FA237 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558B328E49E60006FA237 /* QueueSpace */,
+				7B9558AF28E49E29006FA237 /* mQueue */,
+				7B9558AB28E49DF6006FA237 /* mMessage */,
+				7B9558A728E49DCF006FA237 /* mHeaderBase */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		7B9558A228E49D4E006FA237 /* mLogger */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558A028E49D2B006FA237 /* mLogger.hpp */,
+				7B95589F28E49D2B006FA237 /* mLogger.cpp */,
+			);
+			path = mLogger;
+			sourceTree = "<group>";
+		};
+		7B9558A328E49D5F006FA237 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558A428E49D6D006FA237 /* tools.cpp */,
+				7B9558A528E49D6D006FA237 /* tools.hpp */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
+		7B9558A728E49DCF006FA237 /* mHeaderBase */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558A828E49DDE006FA237 /* mHeaderBase.cpp */,
+				7B9558A928E49DDE006FA237 /* mHeaderBase.hpp */,
+			);
+			path = mHeaderBase;
+			sourceTree = "<group>";
+		};
+		7B9558AB28E49DF6006FA237 /* mMessage */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558AC28E49E11006FA237 /* mMessage.cpp */,
+				7B9558AD28E49E11006FA237 /* mMessage.hpp */,
+			);
+			path = mMessage;
+			sourceTree = "<group>";
+		};
+		7B9558AF28E49E29006FA237 /* mQueue */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558B028E49E39006FA237 /* mQueue.cpp */,
+				7B9558B128E49E39006FA237 /* mQueue.hpp */,
+			);
+			path = mQueue;
+			sourceTree = "<group>";
+		};
+		7B9558B328E49E60006FA237 /* QueueSpace */ = {
+			isa = PBXGroup;
+			children = (
+				7B9558B428E49E69006FA237 /* QueueSpace.cpp */,
+				7B9558B528E49E69006FA237 /* QueueSpace.hpp */,
+			);
+			path = QueueSpace;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +214,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B95589728E49CE5006FA237 /* main.cpp in Sources */,
+				7B9558B228E49E39006FA237 /* mQueue.cpp in Sources */,
+				7B9558AA28E49DDE006FA237 /* mHeaderBase.cpp in Sources */,
+				7B9558A128E49D2B006FA237 /* mLogger.cpp in Sources */,
+				7B9558B628E49E69006FA237 /* QueueSpace.cpp in Sources */,
+				7B9558AE28E49E11006FA237 /* mMessage.cpp in Sources */,
+				7B9558A628E49D6D006FA237 /* tools.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
