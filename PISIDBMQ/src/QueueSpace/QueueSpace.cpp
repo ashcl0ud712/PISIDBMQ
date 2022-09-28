@@ -47,7 +47,7 @@ mQueue* QueueSpace::GetQueueLoc(std::string qName){
     else return nullptr;
 }
 
-// rip
+// rip queue
 void QueueSpace::DeleteQueue(std::string qName){
     for(QueueElement q : qIndex){
         if(q.name == qName){
