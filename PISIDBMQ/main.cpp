@@ -8,6 +8,6 @@
 #include <iostream>
 #include "tests/QueueTests.hpp"
 int main(int argc, const char * argv[]) {
-
+    QueueMultiThreadTest();
     return 0;
 }

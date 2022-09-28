@@ -63,6 +63,7 @@
 		7B95588A28E49CE5006FA237 = {
 			isa = PBXGroup;
 			children = (
+				7B9558BB28E4A0D1006FA237 /* README.md */,
 				7B95589528E49CE5006FA237 /* PISIDBMQ */,
 				7B95589428E49CE5006FA237 /* Products */,
 			);
@@ -83,7 +84,6 @@
 				7B95589E28E49CF5006FA237 /* src */,
 				7B95589D28E49CEE006FA237 /* lib */,
 				7B95589628E49CE5006FA237 /* main.cpp */,
-				7B9558BB28E4A0D1006FA237 /* README.md */,
 			);
 			path = PISIDBMQ;
 			sourceTree = "<group>";
