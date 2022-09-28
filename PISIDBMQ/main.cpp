@@ -9,5 +9,6 @@
 #include "tests/QueueTests.hpp"
 int main(int argc, const char * argv[]) {
     QueueMultiThreadTest();
+    QueueSpam();
     return 0;
 }
