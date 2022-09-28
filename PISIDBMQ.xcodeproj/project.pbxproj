@@ -46,6 +46,7 @@
 		7B9558B528E49E69006FA237 /* QueueSpace.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueueSpace.hpp; sourceTree = "<group>"; };
 		7B9558B828E4A06E006FA237 /* QueueTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueueTests.cpp; sourceTree = "<group>"; };
 		7B9558B928E4A06E006FA237 /* QueueTests.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueueTests.hpp; sourceTree = "<group>"; };
+		7B9558BB28E4A0D1006FA237 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 				7B95589E28E49CF5006FA237 /* src */,
 				7B95589D28E49CEE006FA237 /* lib */,
 				7B95589628E49CE5006FA237 /* main.cpp */,
+				7B9558BB28E4A0D1006FA237 /* README.md */,
 			);
 			path = PISIDBMQ;
 			sourceTree = "<group>";
