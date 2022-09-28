@@ -7,6 +7,15 @@
 
 #include "QueueSpace.hpp"
 
+std::string QueueSpace::getName(){
+    return name;
+}
+
+QueueSpace::~QueueSpace(){
+    mLogger().WARNING("Dropping Queue space " + name);
+}
+
+
 //Use this to create a new queue in the space
 void QueueSpace::AddQueue(std::string qName){
     if (checkQueueExists(qName)==-1){
@@ -62,10 +71,7 @@ long QueueSpace::AcceptMessage(mMessage message, std::string qName){
     else return -1;
 }
 
-std::string QueueSpace::getName(){
-    return name;
+long QueueSpace::AcceptMessage(mMessage message, std::string qName, bool important){
+    return -1;
 }
 
-QueueSpace::~QueueSpace(){
-    mLogger().WARNING("Dropping Queue space " + name);
-}

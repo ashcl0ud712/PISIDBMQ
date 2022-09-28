@@ -45,7 +45,7 @@ public:
     
     //smarter AddMessage
     long AcceptMessage(mMessage message, std::string qName);
-    
+    long AcceptMessage(mMessage message, std::string qName, bool important);
     ~QueueSpace();
 };
 #endif /* QueueSpace_hpp */
