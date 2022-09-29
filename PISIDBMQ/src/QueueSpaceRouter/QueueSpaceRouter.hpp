@@ -20,6 +20,12 @@ struct SpaceIndex{
     SpaceIndex(std::string _n, long _i): _spaceName(_n), _spaceIndex(_i){};
 };
 
+/*
+ The coolest class around here. You can basically toss
+ it around and feed it pointers to new queues from your threads, and it will (probably)
+ route valid qMessages to spaces and queues.
+ */
+
 class QueueSpaceRouter{
     std::vector<QueueSpace*> qSpaces;
     std::vector<SpaceIndex> qSpaceIndex;
@@ -28,6 +34,7 @@ public:
     QueueSpaceRouter();
     
     // Acknowledge a QueueSpace
+    // (meaning feed it a new queue space via pointer)
     void AcknowledgeSpace(QueueSpace*);
     
     // Forget a QueueSpace

@@ -23,35 +23,40 @@ bool mLogger::levelSelector(int _level){
 
 std::string mLogger::Debug(std::string message){
     if(levelSelector(levelMap.debug)){
-        std::cout << time(0) << " | DEBUG | " << message << std::endl;
+        time_t t = time(NULL);
+        std::cout << t << " | DEBUG | " << message << "\n";
     }
     return message;
 }
 
 std::string mLogger::INFO(std::string message){
     if(levelSelector(levelMap.info)){
-        std::cout << time(0) << " | INFO | " << message << std::endl;
+        time_t t = time(NULL);
+        std::cout << t << " | INFO | " << message << "\n";
     }
     return message;
 }
 
 std::string mLogger::WARNING(std::string message){
     if(levelSelector(levelMap.warning)){
-        std::cout << time(0) << " | WARNING | " << message << std::endl;
+        time_t t = time(NULL);
+        std::cout << t << " | WARNING | " << message << "\n";
     }
     return message;
 }
 
 std::string mLogger::ERROR(std::string message){
     if(levelSelector(levelMap.error)){
-        std::cout << time(0) << " | ERROR | " << message << std::endl;
+        time_t t = time(NULL);
+        std::cout << t << " | ERROR | " << message << "\n";
     }
     return message;
 }
 
 std::string mLogger::CRITICAL(std::string message){
     if(levelSelector(levelMap.critical)){
-        std::cout << time(0) << " | CRITICAL | " << message << std::endl;
+        time_t t = time(NULL);
+        std::cout << t << " | CRITICAL | " << message << "\n";
     }
     return message;
 }

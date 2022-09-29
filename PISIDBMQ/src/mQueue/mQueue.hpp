@@ -54,6 +54,9 @@ public:
     // states from _QUEUE_STATE
     int getState();
     
+    //get state string
+    std::string getStateName();
+    
     // update state
     void setState(int state);
     
@@ -68,7 +71,7 @@ public:
     long getMessageCount();
     
     // better use QueueSpace.AcceptMessage
-    std::string AddMessage(mMessage message);
+    int AddMessage(mMessage message);
     
     // get the 0th message
     mMessage GetMessage();

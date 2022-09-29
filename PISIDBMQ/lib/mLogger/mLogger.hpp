@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include "../tools/tools.hpp"
-
+#include <time.h>
 struct _levelMap{
     int debug = 1;
     int info = 2;

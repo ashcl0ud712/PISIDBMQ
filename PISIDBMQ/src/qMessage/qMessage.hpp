@@ -10,6 +10,11 @@
 
 #include <stdio.h>
 #include "../mMessage/mMessage.hpp"
+
+/*
+ Extending mMessage here into qMessage
+ This class adds the route the message should go to and its timestamp
+ */
 class qMessage : public mMessage{
     std::string route;
     time_t timestamp;

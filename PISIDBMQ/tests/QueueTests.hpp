@@ -2,6 +2,20 @@
 #include "../src/QueueSpaceRouter/QueueSpaceRouter.hpp"
 #include <thread>
 
+std::string genMessageKey(int n)
+{
+    char alphabet[26] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
+                          'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                          'o', 'p', 'q', 'r', 's', 't', 'u',
+                          'v', 'w', 'x', 'y', 'z' };
+ 
+    std::string res = "";
+    for (int i = 0; i < n; i++)
+        res = res + alphabet[rand() % 26];
+     
+    return res;
+}
+
 void CreateQueueTest(){
     mLogger Log(1);
     Log.INFO("Trying to create a queue with state=1 (down)");
@@ -16,9 +30,9 @@ void CreateQueueTest(){
     
     Log.INFO("Inserting message to queue " + name);
     
-    if(!queue.AddMessage(message).empty()){
+    if(queue.AddMessage(message) == 1){
         Log.INFO("Queue is down - OK");
-        Log.INFO(queue.AddMessage(message));
+        Log.INFO("Trying to add message to an empty queue");
     }
     else{
         Log.ERROR("Something wrong");
@@ -30,8 +44,8 @@ void CreateQueueTest(){
     Log.INFO("Current state: " + std::to_string(queue.getState()));
     Log.INFO("Inserting message to queue " + name);
     
-    std::string r = queue.AddMessage(message);
-    if(r.empty()){
+    int r = queue.AddMessage(message);
+    if(r == 2){
         Log.INFO("OK");
     }
     else Log.ERROR("Not OK");
@@ -53,11 +67,11 @@ void QueueSpam(){
         
         Log.INFO("Inserting message to queue " + name);
         
-        std::string r = queue.AddMessage(message);
-        if(r.empty()){
+        int r = queue.AddMessage(message);
+        if(r == 2){
             Log.INFO("OK");
         }
-        else Log.ERROR("Not OK: " + r);
+        else Log.ERROR("Not OK");
     }
 
 
@@ -114,35 +128,68 @@ void QueueMultiThreadTest(){
 }
 
 void QueueSpaceRouterTest(){
+    std::string qNameTest = "test.queue_name";
     mLogger Log(1);
-    Log.INFO("Creating a new router");
+    Log.INFO("Test > Creating a new router");
     QueueSpaceRouter r;
     
-    Log.INFO("Creating a new space");
+    Log.INFO("Test > Creating a new space");
     QueueSpace s("TEST_QUEUE_SPACE");
     
-    Log.INFO("Creating a new queue");
-    s.AddQueue("TEST_QUEUE_1");
+    Log.INFO("Test > Creating a new queue");
+    s.AddQueue(qNameTest);
     
-    Log.INFO("Adding TEST_QUEUE_SPACE to router's index");
+    Log.INFO("Test > Adding TEST_QUEUE_SPACE to router's index");
     r.AcknowledgeSpace(&s);
     
-    Log.INFO("Creating a message");
-    qMessage m(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/TEST_QUEUE_1", time_t(0));
-    Log.INFO("Created message: " + m.ToString());
+    Log.INFO("Test > Creating a message");
+    qMessage m(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/" + qNameTest, time_t(0));
+    Log.INFO("Test > Created message: " + m.ToString());
     
-    Log.INFO("Trying to route message to the queue");
+    Log.INFO("Test > Trying to route message to the queue");
     // r.RouteMessage(m);
     std::string rs = r.RouteMessage(m);
-    std::cout << rs << std:: endl;
+    
+    rs = r.RouteMessage(m);
+    
+    qMessage n(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/TEST_QUEUE_2", time_t(0));
+    rs = r.RouteMessage(n);
     // std::cout << r.FindQSpace("TEST_QUEUE_SPACE")->checkQueueLoad("TEST_QUEUE_1");
     
 }
 
+void QueueSpaceSingleRouterTest(QueueSpaceRouter* router, std::string sName){
+    mLogger Log(1);
+    std::string qName = "TEST_QUEUE_"+sName;
+    Log.INFO("TEST > Creating QueueSpace");
+    QueueSpace* s = new QueueSpace(sName);
+    s->AddQueue(qName);
+    router->AcknowledgeSpace(s);
+    for(int i=0; i<10100; i++){
+        Log.INFO("TEST > Creating a message to insert into queue " + qName + ", current state: " + s->GetQueueLoc(qName)->getStateName());
+        qMessage message(mHeaderBase("headerName", "headerValue"), genMessageKey(12), "messageValue"+std::to_string(i), sName + "/" + qName, time(0));
+        
+        Log.INFO("TEST > Created message: '" + message.ToString() + "'");
+        
+        Log.INFO("TEST > Inserting message to queue " + qName);
+        
+        std::string r = router->RouteMessage(message);
+    }
+    s->~QueueSpace();
+    
+}
 
-size_t VectorTest(){
-    std::vector<qMessage> v;
-    v.push_back(qMessage(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/TEST_QUEUE_1", time_t(0)));
-    v.push_back(qMessage(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/TEST_QUEUE_1", time_t(0)));
-    return v.size();
+void QueueSpaceRouterThreadedTest(){
+    QueueSpaceRouter qs1;
+    QueueSpaceRouter qs2;
+    QueueSpaceRouter qs3;
+    QueueSpaceRouter qs4;
+    std::thread t1(&QueueSpaceSingleRouterTest, &qs1, "QueueSpace_1");
+    std::thread t2(&QueueSpaceSingleRouterTest, &qs2, "QueueSpace_2");
+    std::thread t3(&QueueSpaceSingleRouterTest, &qs3, "QueueSpace_3");
+    std::thread t4(&QueueSpaceSingleRouterTest, &qs4, "QueueSpace_4");
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
 }

@@ -18,12 +18,14 @@ QueueSpace::~QueueSpace(){
 
 //Use this to create a new queue in the space
 void QueueSpace::AddQueue(std::string qName){
+    mLogger(1).INFO("QueueSpace " + name + " | AddQueue called with new name " + qName);
     if (checkQueueExists(qName)==-1){
         long currentIndex = qIndex.size();
         qIndex.push_back(QueueElement(qName, currentIndex));
         qList.push_back(mQueue(name+"/"+qName, qName, 2));
         mLogger(1).WARNING("QueueSpace " + name + " | Created a queue: " + qName);
     }
+    else mLogger(1).WARNING("QueueSpace " + name + " | Queue with name " + qName + "already exists");
 }
 
 // if queue exists, return its position in qList
@@ -61,11 +63,16 @@ void QueueSpace::DeleteQueue(std::string qName){
 // actually preferable to use this over AddMessage() via pointers
 // and more developer-friendly
 long QueueSpace::AcceptMessage(mMessage message, std::string qName){
+    mLogger(1).INFO(message.Key() + " | QueueSpace " + name  + " | Received message for queue " + qName);
     long pos = checkQueueExists(qName);
     
     // does the queue exist and is message valid?
     if(pos != -1 && message.isValid()){
-        std::string r = qList[pos].AddMessage(message);
+        int r = qList[pos].AddMessage(message);
+        switch(r){
+            case 1: mLogger(1).INFO(message.Key() + " | QueueSpace " + name  + " | Added message");
+            case 3: mLogger(1).ERROR(message.Key() + " | QueueSpace " + name  + " | FAILED to add message: queue crashed");
+        }
         return qList[pos].getState();
     }
     else return -1;

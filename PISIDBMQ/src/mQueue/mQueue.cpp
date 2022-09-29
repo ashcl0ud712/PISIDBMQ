@@ -11,13 +11,22 @@ void mQueue::setState(int _state){ state = _state; }
 
 int mQueue::getState(){ return state; }
 
-std::string mQueue::AddMessage(mMessage message){
+std::string mQueue::getStateName(){
+    switch(state){
+        case 1: return "down";
+        case 2: return "up";
+        case 3: return "crashed";
+    }
+    return "";
+}
+
+int mQueue::AddMessage(mMessage message){
     try{
         // check if queue is up and ready
         if(messages.size() < MAX_MESSAGE_COUNT){
             if(state == states.up){
                 messages.push_back(message);
-                return "";
+                return state;
             }
             else{
                 throw(state);
@@ -25,11 +34,12 @@ std::string mQueue::AddMessage(mMessage message){
         }
         else{
             state = 3;
-            return "Queue crashed";
+            return state;
         }
     }
     catch(int state){
-        return "Invalid queue state: " + std::to_string(state);
+        mLogger(1).ERROR(message.Key() + " | " + name + " | QUEUE_LOG | Invalid queue state: " + std::to_string(state));
+        return state;
     }
 
     return NULL;
@@ -48,7 +58,7 @@ mMessage mQueue::GetMessage(){
 std::string mQueue::ReadMessage(){
     try{
         //check oif queue is up and ready
-        if(state == states.up){
+        if(state == states.up || state == states.crashed){
             // set offset to a message, marking it as read
             messages.front().SetOffset(currentOffset);
             currentOffset++;
@@ -65,7 +75,7 @@ std::string mQueue::ReadMessage(){
 }
 
 mQueue::~mQueue(){
-    mLogger(1).WARNING(name + "_queue | Cleared queue");
+    mLogger(1).WARNING(name + " | QUEUE_LOG | Cleared queue");
     route = "";
     name = "";
     state = NULL;
@@ -74,7 +84,7 @@ mQueue::~mQueue(){
 
 void mQueue::EmptyQueue(){
     messages.empty();
-    mLogger(1).WARNING(name + "_queue | Cleared queue");
+    mLogger(1).WARNING(name + " | QUEUE_LOG | Cleared queue");
 }
 
 long mQueue::getMessageCount(){

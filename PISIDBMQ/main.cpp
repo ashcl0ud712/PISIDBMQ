@@ -10,7 +10,6 @@
 int main(int argc, const char * argv[]) {
     // QueueMultiThreadTest();
     // QueueSpam();
-    QueueSpaceRouterTest();
-    // std::cout << VectorTest();
+    QueueSpaceRouterThreadedTest();
     return 0;
 }
