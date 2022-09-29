@@ -14,11 +14,10 @@
 #include "../mHeaderBase/mHeaderBase.hpp"
 class mMessage{
     int _offset;
+public:
     std::vector<mHeaderBase> Headers;
     std::string key;
     std::string value;
-    
-public:
     mMessage(mHeaderBase header, std::string _key, std::string _value):
         key(_key),
         value(_value){

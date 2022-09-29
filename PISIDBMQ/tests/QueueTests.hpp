@@ -1,4 +1,5 @@
 #include "../src/QueueSpace/QueueSpace.hpp"
+#include "../src/QueueSpaceRouter/QueueSpaceRouter.hpp"
 #include <thread>
 
 void CreateQueueTest(){
@@ -112,3 +113,36 @@ void QueueMultiThreadTest(){
     t4.join();
 }
 
+void QueueSpaceRouterTest(){
+    mLogger Log(1);
+    Log.INFO("Creating a new router");
+    QueueSpaceRouter r;
+    
+    Log.INFO("Creating a new space");
+    QueueSpace s("TEST_QUEUE_SPACE");
+    
+    Log.INFO("Creating a new queue");
+    s.AddQueue("TEST_QUEUE_1");
+    
+    Log.INFO("Adding TEST_QUEUE_SPACE to router's index");
+    r.AcknowledgeSpace(&s);
+    
+    Log.INFO("Creating a message");
+    qMessage m(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/TEST_QUEUE_1", time_t(0));
+    Log.INFO("Created message: " + m.ToString());
+    
+    Log.INFO("Trying to route message to the queue");
+    // r.RouteMessage(m);
+    std::string rs = r.RouteMessage(m);
+    std::cout << rs << std:: endl;
+    // std::cout << r.FindQSpace("TEST_QUEUE_SPACE")->checkQueueLoad("TEST_QUEUE_1");
+    
+}
+
+
+size_t VectorTest(){
+    std::vector<qMessage> v;
+    v.push_back(qMessage(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/TEST_QUEUE_1", time_t(0)));
+    v.push_back(qMessage(mHeaderBase("headerName", "headerValue"), "messageKey", "messageValue", "TEST_QUEUE_SPACE/TEST_QUEUE_1", time_t(0)));
+    return v.size();
+}

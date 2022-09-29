@@ -65,7 +65,7 @@ std::string mQueue::ReadMessage(){
 }
 
 mQueue::~mQueue(){
-    mLogger(1).WARNING("Cleared queue");
+    mLogger(1).WARNING(name + "_queue | Cleared queue");
     route = "";
     name = "";
     state = NULL;
@@ -74,7 +74,7 @@ mQueue::~mQueue(){
 
 void mQueue::EmptyQueue(){
     messages.empty();
-    mLogger(1).WARNING("Cleared queue");
+    mLogger(1).WARNING(name + "_queue | Cleared queue");
 }
 
 long mQueue::getMessageCount(){

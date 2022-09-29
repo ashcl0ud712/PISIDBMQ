@@ -23,7 +23,7 @@ struct _QUEUE_STATE{
 class mQueue{
     
     // hardcoded for now
-    int MAX_MESSAGE_COUNT = 1000;
+    int MAX_MESSAGE_COUNT = 10000;
     
     int id;
     

@@ -20,7 +20,7 @@ QueueSpace::~QueueSpace(){
 void QueueSpace::AddQueue(std::string qName){
     if (checkQueueExists(qName)==-1){
         long currentIndex = qIndex.size();
-        qIndex.push_back(QueueElement(qName, currentIndex+1));
+        qIndex.push_back(QueueElement(qName, currentIndex));
         qList.push_back(mQueue(name+"/"+qName, qName, 2));
         mLogger(1).WARNING("QueueSpace " + name + " | Created a queue: " + qName);
     }
@@ -75,3 +75,6 @@ long QueueSpace::AcceptMessage(mMessage message, std::string qName, bool importa
     return -1;
 }
 
+long QueueSpace::GetQueueCount(){
+    return qList.size();
+}

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B71C65928E56B82000B7A06 /* qMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B71C65728E56B82000B7A06 /* qMessage.cpp */; };
+		7B71C65D28E5824C000B7A06 /* QueueSpaceRouter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B71C65B28E5824C000B7A06 /* QueueSpaceRouter.cpp */; };
 		7B95589728E49CE5006FA237 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B95589628E49CE5006FA237 /* main.cpp */; };
 		7B9558A128E49D2B006FA237 /* mLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B95589F28E49D2B006FA237 /* mLogger.cpp */; };
 		7B9558A628E49D6D006FA237 /* tools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B9558A428E49D6D006FA237 /* tools.cpp */; };
@@ -30,6 +32,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B71C65728E56B82000B7A06 /* qMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = qMessage.cpp; sourceTree = "<group>"; };
+		7B71C65828E56B82000B7A06 /* qMessage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = qMessage.hpp; sourceTree = "<group>"; };
+		7B71C65B28E5824C000B7A06 /* QueueSpaceRouter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueueSpaceRouter.cpp; sourceTree = "<group>"; };
+		7B71C65C28E5824C000B7A06 /* QueueSpaceRouter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueueSpaceRouter.hpp; sourceTree = "<group>"; };
 		7B95589328E49CE5006FA237 /* PISIDBMQ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PISIDBMQ; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B95589628E49CE5006FA237 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7B95589F28E49D2B006FA237 /* mLogger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mLogger.cpp; sourceTree = "<group>"; };
@@ -60,6 +66,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B71C65628E56B29000B7A06 /* qMessage */ = {
+			isa = PBXGroup;
+			children = (
+				7B71C65728E56B82000B7A06 /* qMessage.cpp */,
+				7B71C65828E56B82000B7A06 /* qMessage.hpp */,
+			);
+			path = qMessage;
+			sourceTree = "<group>";
+		};
+		7B71C65A28E58221000B7A06 /* QueueSpaceRouter */ = {
+			isa = PBXGroup;
+			children = (
+				7B71C65B28E5824C000B7A06 /* QueueSpaceRouter.cpp */,
+				7B71C65C28E5824C000B7A06 /* QueueSpaceRouter.hpp */,
+			);
+			path = QueueSpaceRouter;
+			sourceTree = "<group>";
+		};
 		7B95588A28E49CE5006FA237 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +124,8 @@
 		7B95589E28E49CF5006FA237 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				7B71C65A28E58221000B7A06 /* QueueSpaceRouter */,
+				7B71C65628E56B29000B7A06 /* qMessage */,
 				7B9558B328E49E60006FA237 /* QueueSpace */,
 				7B9558AF28E49E29006FA237 /* mQueue */,
 				7B9558AB28E49DF6006FA237 /* mMessage */,
@@ -231,7 +257,9 @@
 				7B95589728E49CE5006FA237 /* main.cpp in Sources */,
 				7B9558B228E49E39006FA237 /* mQueue.cpp in Sources */,
 				7B9558AA28E49DDE006FA237 /* mHeaderBase.cpp in Sources */,
+				7B71C65928E56B82000B7A06 /* qMessage.cpp in Sources */,
 				7B9558A128E49D2B006FA237 /* mLogger.cpp in Sources */,
+				7B71C65D28E5824C000B7A06 /* QueueSpaceRouter.cpp in Sources */,
 				7B9558B628E49E69006FA237 /* QueueSpace.cpp in Sources */,
 				7B9558AE28E49E11006FA237 /* mMessage.cpp in Sources */,
 				7B9558A628E49D6D006FA237 /* tools.cpp in Sources */,
